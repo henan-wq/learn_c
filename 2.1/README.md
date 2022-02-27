@@ -122,3 +122,40 @@ const是一个修饰符，加在int的前面用来给这个变量加上const的�
 
 如果试图修改常量，把它放在赋值运算符的左边，就会被编译器指出错误。
 
+## 多次定义变量
+
+```
+#include <stdio.h>
+
+int main()
+{
+    int amount = 100;		/* 通过程序首次定义变量amount的值	*/
+    int price = 0;
+
+    printf("请输入金额（元）：");
+    scanf("%d", &price);
+
+    printf("请输入票面”）；	
+    scanf("%d", &amount);	/* 在这里通过输入再次定义变量amount的值 */
+
+    int change = amount - price;
+
+    printf("找您%d元。\n", change);
+
+    return 0;
+}
+```
+
+## plus.c
+
+```
+int a;
+int b;
+
+printf("请输入两个整数：");
+scanf("%d %d", &a, &b);
+printf("%d + %d = %d\n", a, b, a + b);
+```
+
+该程序`plus`运行时就算不输入空格，输入第一个数，回车，输入第二个数也是可以的。
+
