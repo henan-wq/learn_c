@@ -180,4 +180,17 @@ printf("%d + %d = %d\n", a, b, a + b);
 第二种修改方法是，不修改运算部分的整数，但在一开始定义foot和inch变量的时候用double取代int，double的意思就是既可以是整数也可以是浮点数。
 然后将scanf格式化字符串中的`%d`修改成`%lf`。
 
+## 数据类型
+
+```
+- 整数
+	- int
+	- printf("%d", ...)
+	- scanf("%d", ...)
+
+- 带小数点的数
+	- double
+	- printf("%f", ...)
+	- scanf("%lf", ...)
+```
 
