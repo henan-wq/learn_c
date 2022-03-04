@@ -30,3 +30,29 @@ scanf("%d %d", &hour1, &minute1);
 scanf("%d %d", &hour2, &minute2);
 ```
 
+以上的代码，如果用分别减的方法，会出现分钟借位的情况：1点40分和2点10分的差：`2-1=1小时，10分-40分=-30分`
+
+更好的做法是：
+
+```
+int hour1, minute1;
+int hour2, minute2;
+
+scanf("%d %d", &hour1, &minute1);
+scanf("%d %d", &hour2, &minute2);
+
+int t1 = hour1 * 60 + minute1;
+int t2 = hour2 * 60 + minute2;
+
+int t = t2 - t1;
+
+printf("时间差是%d小时%d分。", t/60, t%60);
+```
+
+将小时转换为分钟，做运算。然后在格式化字符串中y分别取整数的运算结果和余数的结果。
+
+- `hour1 * 60 + minute1 ->转换分钟为单位`
+- `t/60 -->小时部分;`
+- `t%60 -->分钟`
+
+
