@@ -9,7 +9,7 @@ int main()
 	
 	int cal_time = first_time / 100 * 60 + first_time % 100 + second_time;
 
-	printf("%d%d\n", cal_time / 60, cal_time % 60);
+	printf("%d\n", cal_time / 60 * 100 + cal_time % 60);
 
 	return 0;
 }
