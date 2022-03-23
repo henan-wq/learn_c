@@ -114,6 +114,10 @@ a == b > 0		/* >的优先级更高 */
 
 `/* ...... */`
 
+## 流程图
+
+`test3.c`:
+
 ```
 #include <stdio.h>
 
@@ -147,3 +151,41 @@ A(开始) --> B[初始化]
 	D --> |否| F(停止)
 	E --> F
 ```
+
+再看看`age.c`：
+
+```
+#include <stdio.h>
+
+int main()
+{
+	const int MINOR = 35;
+
+	int age = 0;
+
+	printf("请输入你的年龄：");
+	scanf("%d", &age);
+
+	printf("你的年龄是%d岁。\n", age);
+
+	if ( age < MINOR ) {
+		printf("年轻时美好的，");
+	}
+
+	printf("年龄决定了你的精神世界，好好珍惜吧。\n");
+
+	return 0;
+}
+```
+
+```mermaid
+graph LR
+A(开始) --> B[/"输出“你的年龄时”+age"/]
+	B --> C{"age < MINOR?"}
+	C --> |否| D[/"输出“年龄决定了你的精神世界，好好珍惜吧。”"/]
+	C --> |是| E[/"输出“年轻是美好的。”"/]
+	E --> D
+	D --> F(结束)
+```
+
+
