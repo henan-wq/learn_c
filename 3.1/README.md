@@ -188,4 +188,43 @@ A(开始) --> B[/"输出“你的年龄时”+age"/]
 	D --> F(结束)
 ```
 
+## 否则的话
+
+```
+
+#include <stdio.h>
+
+int main()
+{
+	//  初始化
+	int price = 0;
+	int bill = 0;
+	//  读入金额和票面
+	printf("请输入金额：");
+	scanf("%d", &price);
+	printf("请输入票面：");
+	scanf("%d", &bill);
+	//  找零
+	if ( bill >= price ) {
+		printf("应该找您：%d\n", bill - price);
+	} else {
+		printf("你的钱不够\n");
+	}
+
+	return 0;
+}
+```
+
+流程图如下：
+
+```mermaid
+graph LR
+a(开始) --> b[初始化]
+	b --> c[/输入price和bill/]
+	c --> d{"bill>=price?"}
+	d --> |是| e[/"输出bill-price"/]
+	d --> |否| f[/"输出“钱不够”"/]
+	e --> g(停止)
+	f --> g
+```
 
