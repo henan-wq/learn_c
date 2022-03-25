@@ -228,3 +228,99 @@ a(开始) --> b[初始化]
 	f --> g
 ```
 
+## if语句再探
+
+if语句
+
+> 一个基本的if语句由一个关键字fi开头，跟上在括号里的一个表示条件的逻辑表达式，
+然后是一对大括号“`{}`”之间的的若干条语句。
+如果表示条件的逻辑表达式的结果不是零，那么就执行后面跟着的这对大括号中的语句，
+否则就跳过这些语句不执行，而继续下面的其他语句。
+
+也存在不使用大括号的形式：
+
+```
+if ( total > amount )
+	total += amount + 10;
+```
+
+计算薪水的程序：
+
+```
+
+#include <stdio.h>
+
+int main()
+{
+	const double RATE = 8.25;
+	const int STANDARD = 40;
+	double pay = 0.0;
+	int hours;
+	
+	printf("请输入工作的小时数：");
+	scanf("%d", &hours);
+	printf("\n");
+	
+	if (hours > STANDARD)
+		pay = STANDARD * RATE +
+			(hours - STANDARD) * (RATE * 1.5);
+	else
+		pay = hours * RATE;
+	printf("应付工资：%f\n", pay);
+
+	return 0;
+}
+```
+
+判断成绩的程序：
+
+```
+
+#include <stdio.h>
+
+int main()
+{
+	const int PASS = 60;
+	int score;
+
+	printf("请输入成绩：");
+	scanf("%d", &score);
+
+	printf("你输入的成绩是%d.\n", score);
+	if ( score < PASS )
+		printf("很遗憾，这个成绩没有及格。\n");
+	else
+		printf("祝贺你，这个成绩及格了。\n");
+	printf("再见\n");
+
+	return 0;
+}
+
+```
+
+还是判断成绩的程序，如果我们想要在else里执行多个语句，那么就需要用大括号：
+
+```
+
+#include <stdio.h>
+
+int main()
+{
+	const int PASS = 60;
+	int score;
+
+	printf("请输入成绩：");
+	scanf("%d", &score);
+
+	printf("你输入的成绩是%d.\n", score);
+	if ( score < PASS )
+		printf("很遗憾，这个成绩没有及格。\n");
+	else {
+		printf("祝贺你，这个成绩及格了。\n");
+		printf("再见\n");
+	}
+
+	return 0;
+}
+
+```
