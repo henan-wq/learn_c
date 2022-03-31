@@ -198,9 +198,9 @@ int main()
 
 ```mermaid
 graph TD
-a <"x<0"> --> |Y| b ["f=-1"]
+a {"x<0"} --> |Y| b ["f=-1"]
 	b --> c (结束)
-	a --> |N| d <"x==0">
+	a --> |N| d {"x==0"}
 	d --> |Y| e ["f=0"]
 	e --> c
 	d --> |N| f ["f=2*x"]
