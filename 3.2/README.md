@@ -53,9 +53,9 @@ if ( code == READY )
 
 ## else的匹配
 
-在上面的代码片段中，else总和最近的那个if匹配，它们都被最外面那个if所包括。
+在上面的代码片段中，else总和最近的那个if匹配，但是它们也都被最外面的另一个 `if ( code == READY )` 所包括。
 
-接下来我在外面的if后面添加大括弧，也在里面的else前添加大括弧：
+接下来我在外面的if后面添加大括弧，同时也在里面的else前添加大括弧：
 
 ```
 if ( code == READY ) {
@@ -66,5 +66,33 @@ if ( code == READY ) {
 ```
 
 那么，此时else就会在 ` code== READY ` 不被满足的情况下执行，而与` if ( count <20 ) `不再有关系。
+
+## 缩进
+
+** 缩进格式不能暗示`else` 的匹配 **
+
+```
+if ( code == READY )
+	if ( count <20 )
+		printf("一切正常\n");
+else
+	printf("继续等待\n");
+```
+
+以上代码如果满足`if ( code == READY )` ，却不满足`if ( count <20 )`，
+那么会执行else语句。
+
+## 嵌套的if
+
+```
+if ( gameover == 0)
+	if (player2move = 2)
+printf("Your turn\n");
+```
+
+## tips
+
+- 在if或else后面总是使用`{}`
+- 即使只有一条语句的时候
 
 
