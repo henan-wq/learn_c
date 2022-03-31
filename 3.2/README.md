@@ -95,4 +95,104 @@ printf("Your turn\n");
 - 在if或else后面总是使用`{}`
 - 即使只有一条语句的时候
 
+## 分段函数
+
+按条件写一段程序，条件如下：
+
+```
+f(x) = -1; x<0
+     = 0;  x=0
+     = 2x; x>0
+```
+
+我第一遍写的程序：
+
+```
+
+//	分段函数
+
+#include <stdio.h>
+
+int main()
+{
+	int x = 0;
+	scanf("%d", &x);
+
+	if ( x < 0 ) {
+		printf("f(%d) = -1\n", x);
+	} else {
+		if ( x == 0 ) {
+			printf("f(%d) = 0\n", x);
+		} else {
+			printf("f(%d) = %d\n", x, 2 * x);
+		}
+	}
+
+	return 0;
+
+}
+```
+
+第二次写的程序：
+
+```
+
+//	分段函数
+
+#include <stdio.h>
+
+int main()
+{
+	int x = 0;
+	int f = 0;
+
+	scanf("%d", &x);
+	if ( x < 0 ) {
+		f = -1;
+	} else {
+		if ( x == 0 ) {
+			f = 0;
+		} else {
+			f = 2 * x;
+		}
+	}
+
+	printf("f(%d) = %d\n", x, f);
+
+	return 0;
+}
+```
+
+课程上的新方法：`else if`：
+
+```
+
+//	分段函数
+#include <stdio.h>
+
+int main()
+{
+	int x = 0;
+	int f = 0;
+
+	scanf("%d", &x);
+
+	if ( x < 0 ) {
+		f = -1;
+	} else if ( x == 0 ) {
+		f = 0;
+	} else {
+		f = 2 * x;
+	}
+
+	printf("f(%d) = %d\n", x, f);
+	
+	return 0;
+}
+```
+
+新方法出现的`else if` 本质上对应的是`if ( x > 0 )`，而最后的`else`对应的是`else if`。
+
+这个写法可以少写一次大括号，也很有趣……
+
 
