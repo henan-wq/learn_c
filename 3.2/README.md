@@ -244,4 +244,62 @@ else
 	st1001;
 ```
 
+## if常见错误
+
+- 忘了大括号
+- if后面的分号
+- 错误使用`==`和`=`
+- 使人困惑的`else`
+
+## 忘了大括号
+
+```
+if ( age >60 )
+	salary = salary * 1.2;
+	printf("%f", salary);
+```
+
+以上程序就算age的值不满足if，程序也会运行printf语句。更好的做法是：
+
+```
+if ( age >60 ) {
+	salary = salary * 1.2;
+	printf("%f", salary);
+}
+```
+
+## if 后面的分号
+
+```
+if ( age > 60 );
+{
+	salary = salary * 1.2;
+	printf("%f", salary);
+}
+```
+
+该程序等同于：
+
+```
+if ( age > 60 )
+	;
+{
+	salary = salary * 1.2;
+	printf("%f", salary);
+}
+```
+
+> 可以把`        ;`看作是这个程序里仅满足if语句条件时内要执行的语句，也就是什么都不做。
+
+而：
+
+```
+{
+        salary = salary * 1.2;
+        printf("%f", salary);
+}
+```
+
+就和普通的语句一样按顺序执行罢了（暂时忽略大括弧吧）。记住，它们都不属于if语句了。
+
 
