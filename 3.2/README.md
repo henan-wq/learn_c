@@ -467,7 +467,7 @@ default:
 ```
 int main()
 {
-	int type;		/* type类型只能是int，不能用double
+	int type;		/* type类型只能是int，不能用double */
 
 	......
 	
@@ -536,6 +536,95 @@ default:
 > 如果type ==1，那么执行顺序是：
 `switch --> case 1:--> 空内容 --> case 2: --> printf("你好\n"); --> break; -->return 0`
 
+## try
 
+以下条件是否可以用switch-case来编写程序？
 
+```
+f(x) = -1; x<0
+     = 0; x=0
+     = 2x; x>0
+```
+
+第一次尝试写：
+
+```
+#include <stdio.h>
+
+int main()
+{
+	int x = 0;
+	int f = 0;
+
+	scanf("%d", &x);
+
+	switch ( x ) {
+	case x<0:
+		f = -1;
+		break;
+	case x=0:
+		f = 0;
+		break;
+	case default:
+		f = 2 * x;
+		break;
+	}
+
+	printf("f(%d) = %d\n", x, f);
+	
+	return 0;
+}
+```
+
+报错：
+
+```
+$ gcc test.c
+test.c: In function ‘main’:
+test.c:11:9: error: case label does not reduce to an integer constant
+         case x<0:
+         ^~~~
+test.c:14:9: error: case label does not reduce to an integer constant
+         case x=0:
+         ^~~~
+test.c:17:14: error: expected expression before ‘default’
+         case default:
+              ^~~~~~~
+```
+
+第二次尝试写，可以编译成功并运行：
+
+```
+
+//	try.c
+
+#include <stdio.h>
+
+int main()
+{
+        int x = 0;
+        int f = 0;
+
+        scanf("%d", &x);
+
+        switch ( x < 0 ) {
+		case 1:
+			f = -1;
+			break;
+		default:
+			switch ( x == 0 ) {
+				case 1:
+					f = 0;
+					break;
+				default:
+					f = 2 * x;
+					break;
+			}
+        }
+
+        printf("f(%d) = %d\n", x, f);
+
+        return 0;
+}
+```
 
