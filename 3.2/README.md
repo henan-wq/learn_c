@@ -410,6 +410,8 @@ else
 
 可以写成`switch-case` ：
 
+注意：`type` 可以是**表达式**（那么case所代表的结果需要与表达式的结果匹配），也可以是一个**变量**。
+
 ```
 switch ( type ) {
 case 1:
@@ -423,6 +425,7 @@ case 1000:
 	break;
 default:
 	printf("啊，什么啊？");
+	break;
 }
 ```
 
@@ -430,13 +433,109 @@ default:
 以下顺序进行跳转：
 
 ```
-if --> else if --> else if --> else
+if --> else if --> else if --> else --> ...
 ```
 
 > 但是调试switch-case时候会发现，如果type 的值既不是1、2、...、1000，那么运行顺序如下：
 
 ```
-switch --> default
+switch --> default --> printf --> break --> return 0
 ```
+
+switch-case 语法格式：
+
+```
+switch ( 控制表达式 ) {
+case 常量:
+	语句
+	......
+case 常量:
+	语句
+	......
+default:
+	语句
+	......
+}
+```
+
+
+- 控制表达式只能是整数型的结果
+- 常量可以是常数，也可以是常数计算的表达式
+
+例子1：
+
+```
+int main()
+{
+	int type;		/* type类型只能是int，不能用double
+
+	......
+	
+	switch ( type ) {
+...
+	}
+	
+	return 0;
+}
+```
+
+例子2：
+
+```
+#include4 <stdio.h>
+
+int main()
+{
+	const int MRN = 2;	/* 对应case MRN （提示：C99专有）*/	
+	int type;
+
+	scanf......
+
+	switch ( type ) {
+	case 1:
+		printf...;
+		break;
+	case 1+1+6:		/* 完全可以这么写 */
+		printf...;
+		break;
+	case MRN:		/* 对应const int MRN = 2; （提示：C99专有）*/
+		printf...;
+		break;
+	...
+	}
+	
+	return 0;
+}
+```
+
+## break
+
+> switch语句可以看作是一种基于计算的跳转，计算控制表达式的值后，
+程序会跳转到相匹配的case（分支标号）处。
+分支标号知识说明switch内部位置的路标，在执行完分支中的最后一条语句后，
+如果后面没有break，就会顺序执行到下面的case里去，直到遇到下一个break，
+或者switch结束为止。
+
+例子：
+
+```
+switch ( type )
+{
+case 1:
+case 2:
+	printf("你好\n");
+	break;
+case 3:
+	printf("晚上好\n");
+default:
+	printf...
+	break...
+}
+```
+
+> 如果type ==1，那么执行顺序是：
+`switch --> case 1:--> 空内容 --> case 2: --> printf("你好\n"); --> break; -->return 0`
+
+
 
 
