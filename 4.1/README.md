@@ -117,3 +117,78 @@ int main()
 }
 ```
 
+问题：任何范围的正整数怎么办？
+
+## 换个方式想
+
+```
+
+//	analysis_digits_cross_out.c
+//
+//	Analysis Digits
+//	Each time the rightmost digit is crossed out,
+//	it is counted until no more digits are crossed out.
+
+#include <stdio.h>
+
+int main()
+{
+	int x;
+	int n = 0;
+
+	scanf("%d", &x);
+	
+	n++;			/* 给n+1，该表达式的值是n原来的值 */
+	x /= 10;		/* 使用复合赋值，也就是x = x / 10 */
+	if ( x > 0 ) {
+		n++;
+		x /= 10;
+		if ( > 0 ) {
+			n++;
+			x /= 10;
+			if ...
+		}
+	}
+
+	printf("%d\n", n);
+
+	return 0;
+}
+```
+
+这个方法还是很繁琐，如果需要数数的位数足够大，就需要一直写重复的代码。
+
+更好的方法是用while：
+
+```
+
+//	analysis_digits_cross_out.c
+//
+//	Analysis Digits
+//	Each time the rightmost digit is crossed out,
+//	it is counted until no more digits are crossed out.
+
+#include <stdio.h>
+
+int main()
+{
+	int x;
+	int n = 0;
+
+	scanf("%d", &x);
+	
+	n++;			/* 给n+1，该表达式的值是n原来的值 */
+	x /= 10;		/* 使用复合赋值，也就是x = x / 10 */
+	while ( x > 0 ) {
+		n++;
+		x /= 10;
+	}
+
+	printf("%d\n", n);
+
+	
+	return 0;
+}
+```
+
+不过目前还是不能计算很多位数的整数的位数。
