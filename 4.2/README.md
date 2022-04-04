@@ -293,8 +293,64 @@ int main()
 // 暂时不用细究这些语句的原理，先“用”。
 ```
 
-我们还可以让随机数变成100以内的数，我们知道：
+## `%100`
+
+> `x%n`的结果是`[0, n-1]`的一个整数
+
+所以：我们还可以让随机数变成100以内的数，我们知道，
 当一个`整数%100`，会得到的余数的数位就只有十位和个位，那么我们让这个`随机数%100`就能
 得到一个100以内的随机数。
 
+那么修改`rand_1.c`，让它变成100以内的随机数`rand_2.c`：
+
 ```
+//	rand_2.c
+#include <stdio.h>
+#include <stdlib.h>	/* stdlib和time都是为了能在程序中使用rand在写的 */
+#include <time.h>
+
+int main()
+{
+	srand(time(0));	/* srand和rand()也是随机数有关的语句 */
+	int a = rand();
+
+	printf("%d\n", a%100);
+
+	return 0;
+}
+// 暂时不用细究这些语句的原理，先“用”。
+```
+
+现在我们把随机数的知识用到我们的程序`guess_teacher`上：
+
+```
+//	guess_teacher.c
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main()
+{
+	srand(time(0));
+	int number = rand()%100+1;
+	int count = 0;
+	int a = 0;
+	printf("我已经想好了一个1到100之间的数。");
+	do {
+		printf("请猜这个1到100之间数：");
+		scanf("%d", &a);
+		count ++;
+		if ( a > number ) {
+			printf("你猜的数大了。");
+		} else if ( a < number ) {
+			printf("你猜的数小了。");
+		}
+	} while ( a != number );
+	printf("太好了！你用了%d次就猜到了答案。\n", count);
+
+	return 0;
+}
+```
+
+
