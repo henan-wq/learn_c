@@ -360,18 +360,6 @@ int main()
 
 `变量->算法->流程图->程序`
 
-\operatorname{sum}=\frac{\sum_{i=1}^{n} x_{i}}{n}
-
-
-$\operatorname{sum}=\frac{\sum_{i=1}^{n} x_{i}}{n}$
-
-$$
-\operatorname{sum}=\frac{\sum_{i=1}^{n} x_{i}}{n}
-$$
-
-\begin{equation}
-\operatorname{sum}=\frac{\sum_{i=1}^{n} x_{i}}{n}
-\end{equation}
-
+![公式](image/mathpix202204041757.png)
 
 
