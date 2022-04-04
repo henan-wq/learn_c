@@ -184,4 +184,36 @@ count
 
 在实际写出程序之前，我们可以先用文字描述程序的思路。
 
+核心重点是循环的条件。（人们往往会考虑循环终止的条件）
+
+我的第一次尝试：
+
+```
+
+//	guess_myself.c
+
+#include <stdio.h>
+
+int main()
+{
+	int x = 456;		/* 假定计算机的随机数是456 */
+	int guess_value;
+	int times = 0;
+
+	do
+	{
+		scanf("%d", &guess_value);
+		times ++;
+	} while ( guess_value != x);
+	
+	printf("你猜对了，你总共猜了%d次！\n", times);
+
+	return 0;
+}
+```
+
+第一次写出的程序运行能正常运行，接下来我看看怎么增加程序运行中的提示，比如根据
+我输入的那些不满足条件的数而输出一些提示：我的数比“随机数”大还是小……
+
+```
 
