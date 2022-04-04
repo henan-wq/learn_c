@@ -370,5 +370,23 @@ int main()
 在拿它去除读到的数的个数就可以了
 - 一个变量记录累加的结果，一个变量记录读到的数的个数
 
+## 算法
+
+1. 初始化变量sum和count为0；
+2. 读入number；
+3. 如果number不是`-1`，则将number加入sum，并将count加1，回到2；
+4. 如果number是`-1`，则计算和打印出`sum/count`（注意换成浮点来计算）。
+
+流程图如下：
+
+```mermaid
+graph LR
+a["sum=0 且count=0"] --> b[/读num/]
+b --> c{"num!=1?"}
+c --> |否|d[/计算和打印结果/]
+c --> |是|e["sum+=num 且count++"]
+e --> b
+```
+
 
 
