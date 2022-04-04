@@ -381,12 +381,131 @@ int main()
 
 ```mermaid
 graph LR
-a["sum=0 且count=0"] --> b[/读num/]
+a["sum=0 count=0"] --> b[/读num/]
 b --> c{"num!=1?"}
 c --> |否|d[/计算和打印结果/]
-c --> |是|e["sum+=num 且count++"]
+c --> |是|e["sum+=num count++"]
 e --> b
 ```
 
+程序如下：
 
+```
+//	average_do-while.c
 
+#include <stdio.h>
+int main()
+{
+	int number;
+	int sum = 0;
+	int count = 0;
+
+	do {
+		scanf("%d", &number);
+	
+		if ( number != -1 ) {
+			sum += number;
+			count ++;
+		}
+	} while ( number != -1 );
+
+	printf("%f\n", 1.0*sum/count);
+
+	return 0;
+}
+```
+
+> 该程序美中不足的地方是每一次循环都会有两次判断`number != -1`，一次是if里的，另一次是while的判断条件。
+
+如果只用while写该程序，那么会写出两个scanf函数，但是第一个scanf函数只会被运行一次，之后循环里重复运行的是另一个scanf函数：
+
+```
+//	average_while.c	
+#include <stdio.h>
+int main()
+{
+	int number;
+	int sum = 0;
+	int count = 0;
+
+	scanf("%d", &number);
+	while ( number != -1 ) {
+		sum += number;
+		count ++;
+		scanf("%d", &number);
+		}
+
+	printf("%f\n", 1.0*sum/count);
+
+	return 0;
+}
+```
+
+## 整数逆序
+
+一个整数是由1至多位数字组成的，如何分解出整数的各个位上的数字，然后加以计算：
+
+- 对一个整数做`%10`的操作，就得到它的个位数；
+- 对一个整数做`/10`的操作，就去掉了他的个位数；
+- 然后再对2的结果做%10，就得到原来数的十位数了；
+- 以此类推；
+
+### 数的逆序
+
+- 输入一个正整数，输出逆序的数
+	- 结尾的0的处理
+
+```
+
+//	整数的逆序
+//	inverse-order-of-intergers.c
+
+#include <stdio.h>
+int main()
+{
+	int x;
+	// scanf("%d", &x);
+	x = 12345;
+	int digit;
+	int ret = 0;
+
+	while ( x > 0 ) {
+		digit = x % 10;
+		//printf("%d\n", digit);
+		ret = ret * 10 + digit;
+		printf("x=%d, digit=%d, ret=%d\n", x, digit, ret);
+		x /= 10;
+	}
+	printf("%d", ret);
+
+	return 0;
+}
+```
+
+另一种逆序：
+
+```
+//	整数的逆序
+//	inverse-order-of-intergers-other.c
+
+#include <stdio.h>
+int main()
+{
+	int x;
+	// scanf("%d", &x);
+	x = 700;
+	int digit;
+	int ret = 0;
+
+	while ( x > 0 ) {
+		digit = x % 10;
+		printf("%d", digit);
+		ret = ret * 10 + digit;
+		// printf("x=%d, digit=%d, ret=%d\n", x, digit, ret);
+		x /= 10;
+	}
+	// printf("%d", ret);
+
+	return 0;
+}
+```
