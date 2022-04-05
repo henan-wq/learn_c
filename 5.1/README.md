@@ -156,7 +156,9 @@ int main()
 ## `for == while`
 
 以下两种循环是等价的：
+
 for循环：
+
 ```
 for ( int i=1; i<=n; i++ ) {
 	fact *= i;
@@ -178,8 +180,27 @@ while ( i<=n ) {
 ```mermaid
 graph LR
 a[i=1] --> b{i<=n}
-b --> |Y|c["fact *= 1"]
+b --> |Y|c["fact *= i"]
 c --> d[i++]
 d --> b
 b --> |N|e[end]
 ```
+
+### for 循环
+
+```
+for ( 初始动作; 条件; 每轮的动作 ) {
+}
+```
+
+> for中的每一个表达式都是可以省略的。
+
+```
+for (; 条件; ) == while ( 条件 )
+```
+
+## Tips for loops
+
+- 如果有固定次数，用for
+- 如果必须执行一次，用`do_while`
+- 其他情况用`while`
