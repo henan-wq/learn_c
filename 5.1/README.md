@@ -104,3 +104,41 @@ for ( int i=1; i<=n; i++ ) {
 printf("%d!=%d\n", n, fact);
 ```
 
+> 注意该方法仅C99支持。
+
+## try
+
+- `1*1`还是1，所以程序的循环不需要从1开始，那么改成从多少开始合适？
+这样修改之后，程序对所有的n都正确吗？这样的改动有价值吗？
+
+- 除了可以从1乘到n来计算`n!`，还可以从n乘到1来计算吧？试试吧循环
+换个方向来计算n。这时候，还需要循环控制变量i吗？
+
+
+还有一种写法：在循环中靠着n自减计算阶乘，但是输出结果可能需要用到变量`n_note`：
+
+```
+//	factorial-for-other.c
+#include <stdio.h>
+int main()
+{
+	int n;
+
+	scanf("%d", &n);
+	int fact = 1;
+	int n_note = n;
+
+	// int i = 1;
+	for ( ; n>1; n-- ) {
+		fact *= n;
+		printf("n=%d, fact=%d\n", n, fact);
+	}
+
+	printf("%d!=%d\n", n_note, fact);
+
+	return 0;
+}
+```
+
+因为这里的初始条件是`n=n;`，所以我可以省略，所以for语句的括号里是：`for ( ; n>1; n-- )`。
+
