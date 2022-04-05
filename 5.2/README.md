@@ -53,14 +53,14 @@ for ( i=2; i<x; i++ ) {
 
 //	当i=2，if判断条件不满足，直接执行printf，回到for循环
 //	接着i=3，if判断条件满足，且执行了continue，于是printf被跳过，回到for循环
+
 ```
 
-```mermain
-graph TD
-a[初始化] --> b{判断条件}
-b --> |True|c[循环体]
-c --> |Continue|d[步进]
-c --> d
-b --> |False|e[结束]
-c --> |Break|e
-```
+
+flowchart TD
+	a[初始化] --> b{判断条件}
+	b --> |True|c[循环体]
+	c --> |Continue|d[步进]
+	c --> d
+	b --> |False|e[结束]
+	c --> |Break|e
