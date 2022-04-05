@@ -56,11 +56,12 @@ for ( i=2; i<x; i++ ) {
 
 ```
 
-
-flowchart TD
-	a[初始化] --> b{判断条件}
+```mermaid
+graph TD
+a[初始化] --> b{判断条件}
 	b --> |True|c[循环体]
 	c --> |Continue|d[步进]
 	c --> d
 	b --> |False|e[结束]
 	c --> |Break|e
+```
