@@ -1,14 +1,3 @@
-# 5.3 循环应用
-
-## 求和
-
-求以下等式：
-
-![file1](images/file1.png)
-
-程序`file1.c`：
-
-```
 #include <stdio.h>
 int main()
 {
@@ -26,9 +15,3 @@ int main()
 
 	return 0;
 }
-```
-
-接下来看看另一个等式：
-
-![file2](images/file2.png)
-
