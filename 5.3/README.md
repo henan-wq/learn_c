@@ -32,6 +32,7 @@ int main()
 
 ![file2](images/file2.png)
 
+```
 #include <stdio.h>
 int main()
 {
@@ -77,13 +78,3 @@ int main()
 	return 0;
 }
 ```
-
-## 整数分解
-
-正序分解整数
-
-- 输入一个非负整数，正序输出它的每一位数字
-- 输人：13425
-- 输出：1 3 4 2 5
-
-
