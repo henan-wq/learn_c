@@ -32,3 +32,48 @@ int main()
 
 ![file2](images/file2.png)
 
+#include <stdio.h>
+int main()
+{
+	int n;
+	int i;
+	double sum = 0;
+	int sign = 1;
+
+	// scanf("%d", &n);
+	n = 1000;
+	for ( i = 1; i<=n; i++ ) {
+		sum += sign*1.0/i;
+		sign = -sign;
+	}
+
+	printf("f(%d)=%f\n", n, sum);
+
+	return 0;
+}
+```
+
+我们还可以对这个程序进行优化，比如用`double sign = 1.0`代替`int sign = 1`，具体做法如下：
+
+```
+#include <stdio.h>
+int main()
+{
+	int n;
+	int i;
+	double sum = 0;
+	// int sign = 1;
+	double sign = 1.0;
+
+	// scanf("%d", &n);
+	n = 1000;
+	for ( i = 1; i<=n; i++ ) {
+		sum += sign/i;
+		sign = -sign;
+	}
+
+	printf("f(%d)=%f\n", n, sum);
+
+	return 0;
+}
+```
