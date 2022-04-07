@@ -20,9 +20,9 @@ int main()
         x %= mask;
         mask /= 10;
         //  printf("x=%d,mask=%d,d=%d\n", x, mask, d);
-    } while ( mask > 0 );
-    printf("\n");
-    return 0;
+    } while ( mask > 0 );   /* 因为70000经过循环后，x=0，但mask */
+    printf("\n");           /* 却不等于0，所以可以用mask作为循环*/
+    return 0;               /* 条件来使用。*/
 }
 
 /*
