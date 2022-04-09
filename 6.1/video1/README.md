@@ -40,3 +40,81 @@ C语言的类型
 
 内存中的表达形式：二进制数（补码）、编码
 
+## sizeof
+
+是一个运算符，给出某个类型或变量在内存中所占据的字节数
+
+- sizeof(int)
+- sizeof(i)
+
+```
+//  file1.c
+#include <stdio.h>
+
+int main()
+{
+    int a;
+    a = 6;
+    printf("sizeof(int)=%ld\n", sizeof(int));
+    printf("sizeof(a)=%ld\n", sizeof(a));
+    printf("sizeof(double)=%ld\n", sizeof(double));
+    return 0;
+}
+/*
+输出结果（字节）：
+sizeof(int)=4
+sizeof(a)=4
+sizeof(double)=8
+ */
+ ```
+
+## sizeof
+
+- 是静态运算符，它的结果在编译时刻就决定了
+- 不要在sizeof的括号里做运算，这些运算不会做的。
+
+```
+//  file2.c
+#include <stdio.h>
+
+int main()
+{
+    int a;
+    a = 6;
+    printf("sizeof(int)=%ld\n", sizeof(int));
+    printf("sizeof(a)=%ld\n", sizeof(a++));
+    printf("sizeof(double)=%ld\n", sizeof(double));
+    return 0;
+}
+/*
+输出结果（字节）：
+sizeof(int)=4
+sizeof(a)=4
+sizeof(double)=8
+*/
+```
+
+> 仔细看`a++`的值
+
+再看程序：
+```
+//  file3.c
+#include <stdio.h>
+
+int main()
+{
+    int a;
+    a = 6;
+    printf("sizeof(int)=%ld\n", sizeof(int));
+    printf("sizeof(a+1.0)=%ld\n", sizeof(a+1.0));
+    printf("sizeof(double)=%ld\n", sizeof(double));
+    return 0;
+}
+/*
+输出结果（字节）：
+sizeof(int)=4
+sizeof(a+1.0)=8
+sizeof(double)=8
+*/
+```
+
